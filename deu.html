@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Simulador: Alemán A1 (Unidades 1-5)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* 3D Flashcard Styles */
+        .flashcard-container {
+            perspective: 1000px;
+        }
+
+        .flashcard {
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <span
+                class="bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Mega
+                Trainer A1.2</span>
+            <h1 class="text-4xl md:text-6xl font-black text-slate-950 mt-3 tracking-tight">Alemán A1 Master 🇩🇪</h1>
+            <p class="text-slate-500 mt-3 text-sm md:text-base max-w-2xl mx-auto font-medium">
+                La plataforma definitiva para tu examen. Estudia la teoría, practica vocabulario con tarjetas, arma
+                oraciones y evalúate con múltiples simulacros.
+            </p>
+        </header>
+
+        <!-- Navigation -->
+        <nav
+            class="flex flex-wrap justify-center gap-2 bg-slate-200/50 p-2 rounded-2xl mb-8 max-w-4xl mx-auto shadow-inner">
+            <button onclick="switchTab('theory')" id="tab-theory"
+                class="tab-btn flex-1 min-w-[140px] px-4 py-3 text-sm font-bold rounded-xl transition-all bg-white text-indigo-700 shadow-sm flex items-center justify-center gap-2">
+                <i class="fa-solid fa-book-open"></i> Teoría Total
+            </button>
+            <button onclick="switchTab('flashcards')" id="tab-flashcards"
+                class="tab-btn flex-1 min-w-[140px] px-4 py-3 text-sm font-bold rounded-xl transition-all text-slate-600 hover:text-slate-900 hover:bg-white/50 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-clone"></i> Flashcards
+            </button>
+            <button onclick="switchTab('builder')" id="tab-builder"
+                class="tab-btn flex-1 min-w-[140px] px-4 py-3 text-sm font-bold rounded-xl transition-all text-slate-600 hover:text-slate-900 hover:bg-white/50 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-layer-group"></i> Estructura
+            </button>
+            <button onclick="switchTab('exams')" id="tab-exams"
+                class="tab-btn flex-1 min-w-[140px] px-4 py-3 text-sm font-bold rounded-xl transition-all text-slate-600 hover:text-slate-900 hover:bg-white/50 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> Exámenes
+            </button>
+        </nav>
+
+        <!-- TAB 1: THEORY -->
+        <div id="panel-theory" class="tab-panel space-y-8">
+
+            <!-- Genders and Articles -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-slate-900 px-6 py-4 flex items-center gap-3">
+                    <span class="text-2xl">🧠</span>
+                    <h2 class="text-xl font-bold text-white">1. Géneros y Casos (Der, Die, Das)</h2>
+                </div>
+                <div class="p-6 md:p-8 grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="font-bold text-indigo-700 mb-3 uppercase tracking-wider text-xs">Trucos de Género
+                            (Nominativo)</h3>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <span class="bg-blue-100 text-blue-800 font-bold px-1.5 rounded">der</span>
+                                <span>Días, meses, estaciones, marcas de coche, alcohol, terminación
+                                    <strong>-ismus</strong>, <strong>-er</strong> (profesiones hombre).
+                                    <br><em>Excepción: das Bier, das Auto.</em></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-rose-100 text-rose-800 font-bold px-1.5 rounded">die</span>
+                                <span>Terminaciones: <strong>-e (80%), -ung, -heit, -keit, -ion, -in, -ei,
+                                        -schaft</strong>. <br><em>Excepción: der Name, der Junge.</em></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 font-bold px-1.5 rounded">das</span>
+                                <span>Diminutivos: <strong>-chen, -lein</strong>. Extranjeros: <strong>-o, -um,
+                                        -ment</strong>. Prefijo: <strong>Ge-</strong>. <br><em>Ej: das Mädchen, das
+                                        Museum.</em></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-3 text-sm">El Cambio del Acusativo (Objeto Directo)</h3>
+                        <p class="text-xs text-slate-500 mb-3">Se usa después de verbos como <em>haben, brauchen, essen,
+                                trinken, möchten</em>.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                            <div class="bg-white p-2 border border-slate-100 rounded text-center">Nominativo (Sujeto)
+                            </div>
+                            <div
+                                class="bg-white p-2 border border-slate-100 rounded text-center font-bold text-indigo-700">
+                                Acusativo (Objeto)</div>
+
+                            <div class="bg-blue-50 p-2 rounded text-center">der / ein / kein</div>
+                            <div class="bg-blue-200 p-2 rounded text-center font-bold text-blue-900">den / einen /
+                                keinen</div>
+
+                            <div class="bg-rose-50 p-2 rounded text-center">die / eine / keine</div>
+                            <div class="bg-rose-50 p-2 rounded text-center">die / eine / keine</div>
+
+                            <div class="bg-emerald-50 p-2 rounded text-center">das / ein / kein</div>
+                            <div class="bg-emerald-50 p-2 rounded text-center">das / ein / kein</div>
+                        </div>
+                        <p class="text-[10px] text-amber-600 font-bold mt-2 text-center">¡SÓLO EL MASCULINO CAMBIA!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verbs Conjugation -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-indigo-600 px-6 py-4 flex items-center gap-3">
+                    <span class="text-2xl">⚡</span>
+                    <h2 class="text-xl font-bold text-white">2. Los Verbos (Conjugación Básica)</h2>
+                </div>
+                <div class="p-6 md:p-8 space-y-6">
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <!-- Regular -->
+                        <div class="border border-slate-200 rounded-xl p-4">
+                            <h3 class="font-bold text-slate-900 mb-2 border-b pb-1">1. Regulares (Ej: machen)</h3>
+                            <ul class="font-mono text-slate-600 space-y-1">
+                                <li>ich mach<strong class="text-indigo-600">e</strong></li>
+                                <li>du mach<strong class="text-indigo-600">st</strong></li>
+                                <li>er/sie/es mach<strong class="text-indigo-600">t</strong></li>
+                                <li>wir mach<strong class="text-indigo-600">en</strong></li>
+                                <li>ihr mach<strong class="text-indigo-600">t</strong></li>
+                                <li>sie/Sie mach<strong class="text-indigo-600">en</strong></li>
+                            </ul>
+                        </div>
+                        <!-- Irregular -->
+                        <div class="border border-amber-200 bg-amber-50 rounded-xl p-4">
+                            <h3 class="font-bold text-amber-900 mb-2 border-b border-amber-200 pb-1">2. Irregulares (Ej:
+                                essen, sprechen)</h3>
+                            <p class="text-xs text-amber-700 mb-2">Cambian vocal solo en <em>du</em> y <em>er</em>.</p>
+                            <ul class="font-mono text-amber-900 space-y-1">
+                                <li>ich esse (e)</li>
+                                <li class="font-bold">du isst (i)</li>
+                                <li class="font-bold">er isst (i)</li>
+                                <li>wir essen (e)</li>
+                            </ul>
+                        </div>
+                        <!-- Modals -->
+                        <div class="border border-emerald-200 bg-emerald-50 rounded-xl p-4">
+                            <h3 class="font-bold text-emerald-900 mb-2 border-b border-emerald-200 pb-1">3. Modales (Ej:
+                                müssen, können)</h3>
+                            <p class="text-xs text-emerald-700 mb-2"><em>ich</em> y <em>er</em> son IGUALES (sin 't').
+                            </p>
+                            <ul class="font-mono text-emerald-900 space-y-1">
+                                <li class="font-bold">ich muss</li>
+                                <li>du musst</li>
+                                <li class="font-bold">er muss</li>
+                                <li>wir müssen</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-100 p-4 rounded-xl flex items-center justify-between text-sm">
+                        <span class="font-bold">Los Jefes (Irregulares Totales):</span>
+                        <div class="flex gap-4">
+                            <span class="bg-white px-3 py-1 rounded shadow-sm"><strong>Sein:</strong> bin, bist, ist,
+                                sind, seid, sind</span>
+                            <span class="bg-white px-3 py-1 rounded shadow-sm"><strong>Haben:</strong> habe, hast, hat,
+                                haben, habt, haben</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family, Time, Food Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Die Familie & Posesivos -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                        <h2 class="text-lg font-bold text-slate-900">3. Familia y Posesivos</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-600">
+                            <div><strong class="text-blue-600">der</strong> Vater (padre)</div>
+                            <div><strong class="text-rose-600">die</strong> Mutter (madre)</div>
+                            <div><strong class="text-blue-600">der</strong> Sohn (hijo)</div>
+                            <div><strong class="text-rose-600">die</strong> Tochter (hija)</div>
+                            <div><strong class="text-blue-600">der</strong> Bruder (hermano)</div>
+                            <div><strong class="text-rose-600">die</strong> Schwester (hermana)</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl text-xs space-y-2 border border-slate-200">
+                            <strong class="block text-slate-800">Raíces de Posesivos (Dueño):</strong>
+                            <div class="grid grid-cols-2 gap-x-2 gap-y-1 font-mono text-slate-600">
+                                <span>ich ➔ mein-</span>
+                                <span>wir ➔ unser-</span>
+                                <span>du ➔ dein-</span>
+                                <span>ihr ➔ euer- (eure)</span>
+                                <span>er/es ➔ sein-</span>
+                                <span>sie (pl) ➔ ihr-</span>
+                                <span>sie (ella) ➔ ihr-</span>
+                            </div>
+                            <p class="text-[10px] text-indigo-600 font-bold pt-1 border-t border-slate-200 mt-2">
+                                Terminaciones: Masculino (nada), Femenino (-e), Plural (-e). En Acusativo Masculino
+                                (-en).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time & Routines -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-2xl">⏰</span>
+                        <h2 class="text-lg font-bold text-slate-900">4. La Hora y Preposiciones</h2>
+                    </div>
+                    <div class="space-y-4 text-sm text-slate-600">
+                        <div>
+                            <strong class="block text-slate-800 mb-1">Preposiciones de Tiempo:</strong>
+                            <ul class="space-y-1 text-xs">
+                                <li><strong class="bg-slate-200 px-1 rounded">um</strong> ➔ Horas exactas (um 14:00 Uhr)
+                                </li>
+                                <li><strong class="bg-slate-200 px-1 rounded">am</strong> ➔ Días y partes del día (am
+                                    Montag, am Morgen). <em>Exc: in der Nacht</em>.</li>
+                                <li><strong class="bg-slate-200 px-1 rounded">von... bis</strong> ➔ Periodos (von 8 bis
+                                    10 Uhr)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-100 p-4 rounded-xl">
+                            <strong class="block text-amber-900 text-xs mb-2">La Hora Informal (El truco de
+                                "halb")</strong>
+                            <ul class="space-y-1 text-xs text-amber-800">
+                                <li>08:15 ➔ <strong>viertel nach</strong> acht.</li>
+                                <li>08:45 ➔ <strong>viertel vor</strong> neun.</li>
+                                <li>08:30 ➔ <strong>halb neun</strong> (media hora PARA las nueve). <br><em>¡Siempre
+                                        mira hacia adelante sumando 1!</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <div id="panel-flashcards" class="tab-panel hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 text-center">
+                <h2 class="text-2xl font-black text-slate-900 mb-2">Tarjetas de Vocabulario (Unidades 1-5)</h2>
+                <p class="text-slate-500 text-sm mb-8">Piensa en la traducción al alemán, el género (der/die/das) y el
+                    plural. Luego, haz clic en la tarjeta para comprobar.</p>
+
+                <!-- Flashcard Viewport -->
+                <div class="flex justify-center mb-8">
+                    <div class="flashcard-container w-full max-w-md h-64 md:h-72">
+                        <div id="flashcard-element" class="flashcard w-full h-full relative" onclick="flipCard()">
+
+                            <!-- Front (Spanish) -->
+                            <div
+                                class="flashcard-face absolute inset-0 w-full h-full bg-slate-50 border-2 border-slate-200 rounded-3xl flex flex-col items-center justify-center p-6 shadow-sm">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">¿Cómo se
+                                    dice en alemán?</span>
+                                <h3 id="fc-front-text"
+                                    class="text-3xl md:text-4xl font-extrabold text-slate-800 text-center">la manzana
+                                </h3>
+                                <div class="absolute bottom-4 text-xs text-slate-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-hand-pointer"></i> Haz clic para voltear
+                                </div>
+                            </div>
+
+                            <!-- Back (German) -->
+                            <div
+                                class="flashcard-face flashcard-back absolute inset-0 w-full h-full bg-indigo-600 border-2 border-indigo-700 rounded-3xl flex flex-col items-center justify-center p-6 shadow-md text-white">
+                                <span id="fc-gender-tag"
+                                    class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-2">MASCULINO</span>
+                                <h3 id="fc-back-text"
+                                    class="text-4xl md:text-5xl font-black text-white text-center mb-2 tracking-tight">
+                                    der Apfel</h3>
+                                <div class="bg-black/20 px-4 py-2 rounded-xl mt-4">
+                                    <span
+                                        class="text-xs font-semibold opacity-80 uppercase tracking-wider">Plural:</span>
+                                    <span id="fc-plural-text" class="text-lg font-bold ml-2">die Äpfel</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex justify-center items-center gap-6">
+                    <button onclick="prevCard()"
+                        class="w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition-all flex items-center justify-center focus:outline-none">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <span id="fc-counter" class="text-sm font-bold text-slate-400 font-mono">1 / 20</span>
+                    <button onclick="nextCard()"
+                        class="w-12 h-12 rounded-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 transition-all flex items-center justify-center focus:outline-none">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SATZBAU -->
+        <div id="panel-builder" class="tab-panel hidden space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-2xl">🧩</span>
+                    <h2 class="text-2xl font-black text-slate-900">Constructor de Oraciones</h2>
+                </div>
+                <p class="text-slate-500 text-sm mb-6">Ordena los bloques. Presta especial atención a la
+                    <strong>Posición 2</strong> (verbo principal o modal) y al <strong>Final</strong> (infinitivo si hay
+                    modal).</p>
+
+                <div
+                    class="flex justify-between items-center bg-slate-50 border border-slate-100 p-2 rounded-xl mb-6 overflow-x-auto">
+                    <div class="flex gap-2" id="builder-selector">
+                        <!-- Buttons JS -->
+                    </div>
+                </div>
+
+                <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 min-h-[120px] flex flex-wrap items-center justify-center gap-3 bg-slate-50/50 mb-6"
+                    id="build-zone">
+                    <span class="text-slate-400 text-sm font-medium">Arrastra o haz clic en las palabras abajo...</span>
+                </div>
+
+                <div class="space-y-2 mb-6">
+                    <span class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block text-center">Bolsa
+                        de Palabras:</span>
+                    <div class="flex flex-wrap items-center justify-center gap-3 p-4 bg-white border border-slate-200 rounded-xl min-h-[80px]"
+                        id="word-pool">
+                        <!-- Options JS -->
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col md:flex-row gap-4 items-center justify-between pt-4 border-t border-slate-100">
+                    <button onclick="resetSentence()"
+                        class="px-5 py-2.5 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-all text-sm w-full md:w-auto focus:outline-none">
+                        Reiniciar
+                    </button>
+                    <div id="build-feedback"
+                        class="hidden p-3 rounded-xl border text-sm font-bold flex-grow text-center transition-all">
+                    </div>
+                    <button onclick="checkSentence()"
+                        class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all text-sm w-full md:w-auto shadow-sm focus:outline-none">
+                        Verificar Oración
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: EXAMS -->
+        <div id="panel-exams" class="tab-panel hidden space-y-6">
+            <!-- Exam Selector -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100" id="exam-dashboard">
+                <h2 class="text-2xl font-black text-slate-900 mb-2">Centro de Evaluaciones A1</h2>
+                <p class="text-slate-500 text-sm mb-6">Selecciona qué áreas quieres poner a prueba. El Mega Simulacro
+                    Final incluye preguntas de todos los temas.</p>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <button onclick="startExam('u13')"
+                        class="p-6 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50 transition-all text-left group">
+                        <span
+                            class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Test
+                            1</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 group-hover:text-blue-700">Unidades 1 - 3</h3>
+                        <p class="text-xs text-slate-500 mt-2">Básicos, Ser/Estar, Familia, Hobbys, Negación.</p>
+                        <div class="mt-4 text-xs font-bold text-slate-400">10 Preguntas</div>
+                    </button>
+
+                    <button onclick="startExam('u45')"
+                        class="p-6 rounded-2xl border-2 border-slate-100 hover:border-emerald-400 hover:bg-emerald-50 transition-all text-left group">
+                        <span
+                            class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Test
+                            2</span>
+                        <h3 class="text-lg font-bold text-slate-800 mt-3 group-hover:text-emerald-700">Unidades 4 - 5
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-2">Acusativo, Posesivos, Modales, Hora, Comida.</p>
+                        <div class="mt-4 text-xs font-bold text-slate-400">15 Preguntas</div>
+                    </button>
+
+                    <button onclick="startExam('mega')"
+                        class="p-6 rounded-2xl border-2 border-indigo-200 bg-indigo-50 hover:bg-indigo-100 transition-all text-left group relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-6xl opacity-10">🏆</div>
+                        <span
+                            class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Gran
+                            Prueba</span>
+                        <h3 class="text-lg font-bold text-indigo-900 mt-3">Mega Simulacro Final</h3>
+                        <p class="text-xs text-indigo-700/80 mt-2">El reto definitivo. Todos los temas combinados para
+                            tu examen del domingo.</p>
+                        <div class="mt-4 text-xs font-bold text-indigo-600">20 Preguntas</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Exam Interface -->
+            <div id="exam-interface" class="hidden">
+                <div
+                    class="bg-white p-6 rounded-t-3xl shadow-sm border border-slate-100 border-b-0 flex justify-between items-center">
+                    <div>
+                        <h2 id="exam-title" class="text-xl font-bold text-slate-900">Título Examen</h2>
+                        <p class="text-xs font-medium text-slate-500 mt-1">Pregunta <span id="exam-q-num">1</span> de
+                            <span id="exam-q-total">10</span></p>
+                    </div>
+                    <button onclick="quitExam()"
+                        class="text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors uppercase tracking-wider">
+                        <i class="fa-solid fa-xmark mr-1"></i> Salir
+                    </button>
+                </div>
+
+                <div class="w-full bg-slate-100 h-1.5">
+                    <div id="exam-progress" class="bg-indigo-600 h-full transition-all duration-300" style="width: 0%">
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-b-3xl shadow-sm border border-slate-100 space-y-6">
+                    <h3 id="exam-question-text"
+                        class="text-xl md:text-2xl font-black text-slate-800 tracking-tight leading-snug">Pregunta...
+                    </h3>
+
+                    <div id="exam-options" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <!-- Options dynamically added -->
+                    </div>
+
+                    <div id="exam-feedback" class="hidden p-5 rounded-xl border text-sm leading-relaxed transition-all">
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button id="exam-btn-next" onclick="nextExamQuestion()"
+                            class="hidden bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-sm focus:outline-none">
+                            Continuar <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Results -->
+            <div id="exam-results"
+                class="hidden bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center space-y-6 max-w-lg mx-auto">
+                <div id="result-icon" class="text-7xl">🏆</div>
+                <h2 class="text-3xl font-black text-slate-900">Simulacro Finalizado</h2>
+                <div>
+                    <div id="result-score" class="text-6xl font-black text-indigo-600 tracking-tighter">0/0</div>
+                    <p id="result-percentage" class="text-sm font-bold text-slate-400 uppercase tracking-widest mt-2">0%
+                    </p>
+                </div>
+                <p id="result-message" class="text-slate-600 text-sm leading-relaxed">Mensaje...</p>
+                <button onclick="quitExam()"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md focus:outline-none w-full">
+                    Volver al Centro de Evaluación
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Tab Controller
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-700', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById('panel-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.remove('text-slate-600');
+            activeBtn.classList.add('bg-white', 'text-indigo-700', 'shadow-sm');
+        }
+
+        // --- FLASHCARDS DATA & LOGIC ---
+        const flashcards = [
+            { es: 'la manzana', de: 'der Apfel', pl: 'die Äpfel', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'el pan', de: 'das Brot', pl: 'die Brote', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'la hermana', de: 'die Schwester', pl: 'die Schwestern', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'el queso', de: 'der Käse', pl: '- (sin plural)', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'el coche / auto', de: 'das Auto', pl: 'die Autos', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'el supermercado', de: 'der Supermarkt', pl: 'die Supermärkte', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'la enfermedad', de: 'die Krankheit', pl: 'die Krankheiten', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'la panadería', de: 'die Bäckerei', pl: 'die Bäckereien', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'el niño', de: 'das Kind', pl: 'die Kinder', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'la botella', de: 'die Flasche', pl: 'die Flaschen', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'el vaso / frasco', de: 'das Glas', pl: 'die Gläser', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'el envase / copa', de: 'der Becher', pl: 'die Becher', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'la carne', de: 'das Fleisch', pl: '- (sin plural)', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'la ensalada', de: 'der Salat', pl: 'die Salate', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'el plátano', de: 'die Banane', pl: 'die Bananen', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'la semana', de: 'die Woche', pl: 'die Wochen', gen: 'femenino', col: 'bg-rose-600' },
+            { es: 'el día', de: 'der Tag', pl: 'die Tage', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'el nombre', de: 'der Name', pl: 'die Namen', gen: 'masculino', col: 'bg-blue-600' },
+            { es: 'la niña / chica', de: 'das Mädchen', pl: 'die Mädchen', gen: 'neutro', col: 'bg-emerald-600' },
+            { es: 'el agua', de: 'das Wasser', pl: 'die Wässer', gen: 'neutro', col: 'bg-emerald-600' }
+        ];
+
+        let fcIndex = 0;
+
+        function loadFlashcard() {
+            const card = document.getElementById('flashcard-element');
+            card.classList.remove('flipped');
+
+            setTimeout(() => {
+                const data = flashcards[fcIndex];
+                document.getElementById('fc-front-text').innerText = data.es;
+                document.getElementById('fc-back-text').innerText = data.de;
+                document.getElementById('fc-plural-text').innerText = data.pl;
+
+                const tag = document.getElementById('fc-gender-tag');
+                tag.innerText = data.gen;
+
+                // Update back face color based on gender
+                const backFace = document.querySelector('.flashcard-back');
+                backFace.className = `flashcard-face flashcard-back absolute inset-0 w-full h-full border-2 rounded-3xl flex flex-col items-center justify-center p-6 shadow-md text-white transition-colors ${data.col} ${data.col.replace('bg-', 'border-')}`;
+
+                document.getElementById('fc-counter').innerText = `${fcIndex + 1} / ${flashcards.length}`;
+            }, 150); // wait for unflip animation if transitioning
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-element').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            fcIndex = (fcIndex + 1) % flashcards.length;
+            loadFlashcard();
+        }
+
+        function prevCard() {
+            fcIndex = (fcIndex - 1 + flashcards.length) % flashcards.length;
+            loadFlashcard();
+        }
+
+        // --- SATZBAU DATA & LOGIC ---
+        const sentences = [
+            {
+                name: 'Inversión',
+                words: ['Am Morgen', 'trinke', 'ich', 'einen', 'Kaffee.'],
+                correct: ['Am Morgen', 'trinke', 'ich', 'einen', 'Kaffee.'],
+                expl: 'Pos 1: Tiempo (Am Morgen), Pos 2: Verbo (trinke), Pos 3: Sujeto (ich), Pos 4: Objeto en Acusativo (einen Kaffee).'
+            },
+            {
+                name: 'Satzklammer',
+                words: ['Ich', 'muss', 'heute', 'einen', 'Brief', 'schreiben.'],
+                correct: ['Ich', 'muss', 'heute', 'einen', 'Brief', 'schreiben.'],
+                expl: 'El Modalverb (muss) va en Posición 2. El infinitivo (schreiben) es expulsado al final absoluto.'
+            },
+            {
+                name: 'Pregunta W',
+                words: ['Was', 'möchtest', 'du', 'am Samstag', 'machen?'],
+                correct: ['Was', 'möchtest', 'du', 'am Samstag', 'machen?'],
+                expl: 'Palabra interrogativa (Was) + Modalverb (möchtest) + Sujeto (du) + ... + Infinitivo (machen) al final.'
+            },
+            {
+                name: 'Posesivos',
+                words: ['Wir', 'lieben', 'unsere', 'Eltern.'],
+                correct: ['Wir', 'lieben', 'unsere', 'Eltern.'],
+                expl: 'Sujeto (Wir) + Verbo (lieben) + Objeto en Acusativo Plural (unsere Eltern).'
+            }
+        ];
+
+        let bIdx = 0;
+        let bSelected = [];
+
+        function initBuilder() {
+            const sel = document.getElementById('builder-selector');
+            sel.innerHTML = '';
+            sentences.forEach((s, i) => {
+                const b = document.createElement('button');
+                b.innerText = s.name;
+                b.className = `px-3 py-1.5 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${i === bIdx ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`;
+                b.onclick = () => { bIdx = i; resetSentence(); };
+                sel.appendChild(b);
+            });
+            resetSentence();
+        }
+
+        function resetSentence() {
+            bSelected = [];
+            document.getElementById('build-feedback').classList.add('hidden');
+            const shuff = [...sentences[bIdx].words].sort(() => Math.random() - 0.5);
+            renderBuilder(shuff);
+        }
+
+        function renderBuilder(poolWords) {
+            const zone = document.getElementById('build-zone');
+            zone.innerHTML = '';
+            if (bSelected.length === 0) zone.innerHTML = '<span class="text-slate-400 text-sm font-medium">Arrastra o haz clic en las palabras abajo...</span>';
+
+            bSelected.forEach((w, i) => {
+                const d = document.createElement('div');
+                d.className = 'px-4 py-2 bg-indigo-50 text-indigo-900 font-bold border border-indigo-200 rounded-xl flex items-center gap-1.5 cursor-pointer hover:bg-rose-50 transition-colors group';
+                d.innerHTML = `<span class="text-[9px] bg-indigo-200 text-indigo-800 rounded w-4 h-4 inline-flex items-center justify-center font-mono">${i + 1}</span><span>${w}</span> <i class="fa-solid fa-xmark text-indigo-300 group-hover:text-rose-400 ml-1 text-xs"></i>`;
+                d.onclick = () => { bSelected.splice(i, 1); renderBuilder(sentences[bIdx].words.filter(x => !bSelected.includes(x))); };
+                zone.appendChild(d);
+            });
+
+            const pool = document.getElementById('word-pool');
+            pool.innerHTML = '';
+            poolWords.forEach(w => {
+                const b = document.createElement('button');
+                b.innerText = w;
+                b.className = 'px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold border border-slate-200 rounded-xl transition-all text-sm';
+                b.onclick = () => { bSelected.push(w); renderBuilder(poolWords.filter(x => x !== w)); };
+                pool.appendChild(b);
+            });
+        }
+
+        function checkSentence() {
+            const s = sentences[bIdx];
+            const fb = document.getElementById('build-feedback');
+            fb.classList.remove('hidden');
+
+            if (bSelected.length < s.words.length) {
+                fb.className = "p-3 rounded-xl border border-amber-200 bg-amber-50 text-amber-800 text-sm font-bold flex-grow text-center";
+                fb.innerText = "⚠️ Usa todas las palabras para formar la oración.";
+                return;
+            }
+
+            let correct = true;
+            for (let i = 0; i < s.correct.length; i++) {
+                if (bSelected[i] !== s.correct[i]) { correct = false; break; }
+            }
+
+            if (correct) {
+                fb.className = "p-3 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 text-sm font-bold flex-grow text-center";
+                fb.innerHTML = `🎉 ¡Correcto! <span class="font-medium text-xs block mt-1">${s.expl}</span>`;
+            } else {
+                fb.className = "p-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-800 text-sm font-bold flex-grow text-center";
+                fb.innerText = "❌ Orden incorrecto. Recuerda la regla de la Posición 2.";
+            }
+        }
+
+        // --- EXAMS DATA & ENGINE ---
+        const examBanks = {
+            'u13': [
+                { q: 'Wie ______ du?', a: 'heißt', opts: ['heißen', 'heißt', 'heiße', 'heißest'], expl: 'La conjugación para "du" termina en -t después de la ß (no -st por ortografía).' },
+                { q: '______ kommst du?', a: 'Woher', opts: ['Wo', 'Wie', 'Woher', 'Was'], expl: '"Kommen" (venir) requiere "Woher" (De dónde).' },
+                { q: 'Er ______ Arzt.', a: 'ist', opts: ['bin', 'bist', 'ist', 'sind'], expl: 'Conjugación del verbo "sein" para 3ra persona (er).' },
+                { q: 'Ich habe ______ Auto.', a: 'kein', opts: ['keine', 'keinen', 'kein', 'nicht'], expl: 'Auto es neutro (das). La negación en nominativo/acusativo es "kein".' },
+                { q: 'Wir ______ in Berlin.', a: 'wohnen', opts: ['wohnt', 'wohne', 'wohnen', 'wohnst'], expl: 'Para "wir", el verbo termina en -en (igual al infinitivo).' },
+                { q: 'Das ist ______ Vater.', a: 'mein', opts: ['meine', 'mein', 'meinen', 'meines'], expl: 'Vater es masculino. En Nominativo ("Das ist..."), no lleva terminación.' },
+                { q: '______ Sie bitte das Wort!', a: 'Buchstabieren', opts: ['Buchstabierst', 'Buchstabiere', 'Buchstabieren', 'Buchstabiert'], expl: 'Imperativo formal (Sie) lleva el verbo en infinitivo en posición 1.' },
+                { q: 'Die Frau ______ ein Buch.', a: 'liest', opts: ['lest', 'lese', 'liest', 'lesen'], expl: 'Verbo irregular "lesen" cambia e->ie en 3ra persona.' },
+                { q: 'Ich spreche Englisch ______ ein bisschen Deutsch.', a: 'und', opts: ['aber', 'oder', 'und', 'denn'], expl: 'Conector básico "und" (y).' },
+                { q: 'Hast du ______ Hobbys?', a: 'Hobbys', opts: ['Hobbys', 'Hobby', 'Hobbis', 'Hobbies'], expl: 'Palabras extranjeras terminadas en -y hacen plural con -s.' }
+            ],
+            'u45': [
+                { q: 'Ich hätte gern ______ Apfel.', a: 'einen', opts: ['ein', 'eine', 'einen', 'der'], expl: 'Apfel es masculino (der). En Acusativo cambia a "einen".' },
+                { q: 'Was ______ das?', a: 'kostet', opts: ['kost', 'kosten', 'kostest', 'kostet'], expl: '"das" equivale a 3ra persona singular -> kostet.' },
+                { q: 'Wir ______ am Wochenende ins Kino gehen.', a: 'wollen', opts: ['will', 'wollen', 'wollt', 'willst'], expl: 'Modalverb "wollen" para "wir" es regular (wollen).' },
+                { q: 'Ich stehe ______ 7:00 Uhr auf.', a: 'um', opts: ['am', 'im', 'um', 'von'], expl: 'Para horas exactas se usa "um".' },
+                { q: '______ Freitag spiele ich Fußball.', a: 'Am', opts: ['Am', 'Um', 'Im', 'Von'], expl: 'Para días de la semana se usa "am".' },
+                { q: 'Es ist 14:30. Es ist ______.', a: 'halb drei', opts: ['halb zwei', 'halb drei', 'dreißig zwei', 'zwei dreißig'], expl: 'Hora informal: "halb" + la siguiente hora (3).' },
+                { q: 'Kaufst du ______ Tomate?', a: 'eine', opts: ['ein', 'eine', 'einen', 'kein'], expl: 'Tomate es femenino (die). El acusativo es "eine".' },
+                { q: 'Ich mag keinen Fisch, ich mag ______ Fleisch.', a: 'nur', opts: ['nur', 'sehr', 'gern', 'auch'], expl: '"nur" significa solamente/solo.' },
+                { q: '______ du eine Pizza?', a: 'Möchtest', opts: ['Möchtet', 'Möchte', 'Möchtest', 'Mögen'], expl: 'Conjugación de möchten para "du" es "möchtest".' },
+                { q: 'Stefan sucht ______ Bruder.', a: 'seinen', opts: ['sein', 'seine', 'seinen', 'ihren'], expl: 'Dueño: él (sein). Objeto: Bruder (masc) en Acusativo -> seinen.' },
+                { q: 'Nele besucht ______ Oma.', a: 'ihre', opts: ['seine', 'ihr', 'ihre', 'ihren'], expl: 'Dueño: ella (ihr). Objeto: Oma (fem) -> ihre.' },
+                { q: 'Das Kind trinkt ______ Milch.', a: 'die', opts: ['den', 'der', 'die', 'das'], expl: 'Milch es femenino. En Acusativo se queda como "die".' },
+                { q: 'Ich arbeite ______ 8 bis 16 Uhr.', a: 'von', opts: ['am', 'um', 'von', 'in'], expl: 'Periodos de tiempo: von... bis...' },
+                { q: 'Das ist ______ Schachtel Pralinen.', a: 'eine', opts: ['ein', 'eine', 'einen', 'der'], expl: 'Schachtel (cajita) es femenino por terminar en -el/tienda -> eine.' },
+                { q: 'Lasse und Nele, ______ Eltern sind hier.', a: 'eure', opts: ['euer', 'euere', 'eure', 'ihre'], expl: 'Dueño: vosotros (euer). Objeto: Eltern (Plural -> +e). Ortografía: euer + e = eure.' }
+            ]
+        };
+
+        let activeExam = [];
+        let examIdx = 0;
+        let examScore = 0;
+        let examAnswered = false;
+
+        function startExam(type) {
+            document.getElementById('exam-dashboard').classList.add('hidden');
+            document.getElementById('exam-results').classList.add('hidden');
+            document.getElementById('exam-interface').classList.remove('hidden');
+
+            if (type === 'mega') {
+                // Shuffle and combine all, pick 20
+                const all = [...examBanks['u13'], ...examBanks['u45']].sort(() => Math.random() - 0.5);
+                activeExam = all.slice(0, 20);
+                document.getElementById('exam-title').innerText = "Mega Simulacro Final";
+            } else {
+                activeExam = [...examBanks[type]].sort(() => Math.random() - 0.5);
+                document.getElementById('exam-title').innerText = type === 'u13' ? "Test 1: U1-3" : "Test 2: U4-5";
+            }
+
+            examIdx = 0;
+            examScore = 0;
+            document.getElementById('exam-q-total').innerText = activeExam.length;
+            loadExamQuestion();
+        }
+
+        function loadExamQuestion() {
+            examAnswered = false;
+            document.getElementById('exam-btn-next').classList.add('hidden');
+            document.getElementById('exam-feedback').classList.add('hidden');
+
+            const q = activeExam[examIdx];
+            document.getElementById('exam-q-num').innerText = examIdx + 1;
+            document.getElementById('exam-progress').style.width = ((examIdx) / activeExam.length) * 100 + '%';
+
+            document.getElementById('exam-question-text').innerText = q.q.replace('______', '________');
+
+            const optsCont = document.getElementById('exam-options');
+            optsCont.innerHTML = '';
+
+            const shuffOpts = [...q.opts].sort(() => Math.random() - 0.5);
+            shuffOpts.forEach(o => {
+                const b = document.createElement('button');
+                b.innerText = o;
+                b.className = 'w-full text-left p-4 rounded-xl border-2 border-slate-100 bg-slate-50 font-bold text-slate-700 hover:bg-indigo-50 hover:border-indigo-200 transition-all focus:outline-none';
+                b.onclick = () => answerExam(o, b);
+                optsCont.appendChild(b);
+            });
+        }
+
+        function answerExam(selected, btn) {
+            if (examAnswered) return;
+            examAnswered = true;
+
+            const q = activeExam[examIdx];
+            const fb = document.getElementById('exam-feedback');
+            fb.classList.remove('hidden');
+
+            const btns = document.getElementById('exam-options').children;
+            for (let b of btns) {
+                b.disabled = true;
+                if (b.innerText === q.a) {
+                    b.className = 'w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 font-black';
+                } else if (b.innerText === selected) {
+                    b.className = 'w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-800 font-black';
+                } else {
+                    b.className = 'w-full text-left p-4 rounded-xl border-2 border-slate-100 bg-slate-50 text-slate-300 font-medium opacity-50';
+                }
+            }
+
+            if (selected === q.a) {
+                examScore++;
+                fb.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-900 text-sm mt-4 font-medium";
+                fb.innerHTML = `✅ <strong>Correcto.</strong> ${q.expl}`;
+            } else {
+                fb.className = "p-4 rounded-xl border border-rose-200 bg-rose-50 text-rose-900 text-sm mt-4 font-medium";
+                fb.innerHTML = `❌ <strong>Incorrecto.</strong> ${q.expl}`;
+            }
+
+            document.getElementById('exam-progress').style.width = ((examIdx + 1) / activeExam.length) * 100 + '%';
+            document.getElementById('exam-btn-next').classList.remove('hidden');
+        }
+
+        function nextExamQuestion() {
+            examIdx++;
+            if (examIdx < activeExam.length) {
+                loadExamQuestion();
+            } else {
+                finishExam();
+            }
+        }
+
+        function finishExam() {
+            document.getElementById('exam-interface').classList.add('hidden');
+            document.getElementById('exam-results').classList.remove('hidden');
+
+            const pct = Math.round((examScore / activeExam.length) * 100);
+            document.getElementById('result-score').innerText = `${examScore}/${activeExam.length}`;
+            document.getElementById('result-percentage').innerText = `${pct}%`;
+
+            let msg = "";
+            let icon = "🏆";
+            if (pct >= 90) { msg = "¡Sobresaliente! Estás completamente listo para el examen."; icon = "🌟"; }
+            else if (pct >= 70) { msg = "¡Muy bien! Dominas la mayoría de los temas. Repasa los pequeños errores."; icon = "👍"; }
+            else { msg = "Necesitas seguir practicando. Regresa a la pestaña de Teoría y Flashcards."; icon = "📚"; }
+
+            document.getElementById('result-message').innerText = msg;
+            document.getElementById('result-icon').innerText = icon;
+        }
+
+        function quitExam() {
+            document.getElementById('exam-interface').classList.add('hidden');
+            document.getElementById('exam-results').classList.add('hidden');
+            document.getElementById('exam-dashboard').classList.remove('hidden');
+        }
+
+        // Init
+        window.onload = () => {
+            loadFlashcard();
+            initBuilder();
+        };
+    </script>
+</body>
+
+</html>
