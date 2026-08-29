@@ -1,43 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-       <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einladungen - Alemán A1</title>
-    <!-- Tailwind CSS -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-    </style>
-</head>
-
-<body class="text-slate-800">
-
-       </head>
-
-<body class="text-slate-800">  
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        
-      
-
-</body>
-</html>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prüfungstrainer: Schreiben & Sprechen</title>
@@ -52,11 +15,20 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .tab-active { background-color: #4f46e5; color: white; border-color: #4f46e5; }
     .tab-inactive { background-color: white; color: #64748b; border-color: #e2e8f0; }
+    .verb-table th, .verb-table td { border: 1px solid #e2e8f0; padding: 0.5rem; text-align: left; }
+    .verb-table th { background-color: #e0e7ff; color: #3730a3; font-weight: 800; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
+<body class="bg-slate-50 text-slate-800 min-h-screen relative">
 
-  <div class="max-w-5xl mx-auto px-4 py-8">
+  <!-- Botón para regresar al Mega Simulador -->
+  <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
+    <button onclick="alert('🔙 Regresando al Mega Simulador Definitivo... (Esta es una simulación de navegación)')" class="flex items-center gap-2 text-indigo-700 hover:text-white bg-white hover:bg-indigo-600 font-bold text-xs md:text-sm px-4 py-2 md:px-5 md:py-2.5 rounded-xl shadow-sm border border-indigo-200 transition-all active:scale-95">
+      <i class="fa-solid fa-arrow-left"></i> <span class="hidden md:inline">Volver al Mega Simulador</span><span class="md:hidden">Volver</span>
+    </button>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 pt-20 pb-8 md:pt-12">
     <!-- Header -->
     <header class="text-center mb-8">
       <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">A1 • Vorbereitung auf den Test</span>
@@ -67,7 +39,7 @@
     <!-- Navigation Tabs -->
     <div class="flex flex-wrap justify-center gap-2 mb-8">
       <button onclick="switchTab('theorie')" id="tab-theorie" class="tab-btn tab-active px-5 py-2.5 text-sm font-bold rounded-xl border transition-all flex items-center gap-2 shadow-sm">
-        <i class="fa-solid fa-book-open"></i> Teoría Base
+        <i class="fa-solid fa-book-open"></i> Teoría Completa
       </button>
       <button onclick="switchTab('schreiben')" id="tab-schreiben" class="tab-btn tab-inactive px-5 py-2.5 text-sm font-bold rounded-xl border transition-all hover:bg-slate-50 flex items-center gap-2">
         <i class="fa-solid fa-pen-nib"></i> Schreiben (Email)
@@ -81,33 +53,121 @@
     </div>
 
     <!-- TAB 1: THEORIE -->
-    <div id="panel-theorie" class="tab-panel space-y-6">
-      <div class="grid md:grid-cols-2 gap-6">
+    <div id="panel-theorie" class="tab-panel space-y-8">
+      
+      <!-- Trennbare Verben (AMPLIADO) -->
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+        <h2 class="text-2xl font-extrabold text-indigo-900 mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-scissors"></i> Trennbare Verben (Verbos Separables)
+        </h2>
+        <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+          Los verbos separables tienen un prefijo (como <em>ein-, mit-, an-, ab-</em>). En una oración normal, el <strong>verbo base</strong> se conjuga en la <strong>Posición 2</strong>, y el <strong>prefijo</strong> viaja hasta el <strong>final absoluto</strong> de la oración.<br>
+          <span class="font-mono bg-indigo-50 px-2 py-1 rounded text-indigo-800 font-bold mt-2 inline-block">Ich <span class="text-rose-600">lade</span> dich zur Party <span class="text-indigo-600">ein</span>.</span>
+        </p>
         
-        <!-- Trennbare Verben -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-          <h2 class="text-xl font-extrabold text-indigo-900 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-scissors"></i> Trennbare Verben (Einladungen)
-          </h2>
-          <p class="text-sm text-slate-600 mb-4">El verbo principal va a la <strong>Posición 2</strong> y el prefijo se va al <strong>final absoluto</strong>.</p>
+        <!-- Tablas de conjugación -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           
-          <div class="space-y-3">
-            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
-              <span class="font-bold text-indigo-700">einladen (invitar):</span>
-              <p>Ich <span class="font-bold text-slate-900">lade</span> dich zur Party <span class="font-bold text-indigo-600 underline">ein</span>.</p>
-              <p class="text-xs text-indigo-500 mt-1">⚠️ Du l<strong>ä</strong>dst ein, er l<strong>ä</strong>dt ein.</p>
+          <!-- einladen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">ein|laden</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Invitar</p>
             </div>
-            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
-              <span class="font-bold text-indigo-700">mitbringen (traer consigo):</span>
-              <p><span class="font-bold text-slate-900">Bringst</span> du einen Salat <span class="font-bold text-indigo-600 underline">mit</span>?</p>
-            </div>
-            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
-              <span class="font-bold text-indigo-700">anfangen (empezar):</span>
-              <p>Die Party <span class="font-bold text-slate-900">fängt</span> um 20 Uhr <span class="font-bold text-indigo-600 underline">an</span>.</p>
-            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>lade ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+              <tr class="bg-amber-50/50"><td class="text-slate-500 font-medium">du</td><td>l<strong class="text-rose-600">ä</strong>dst ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+              <tr class="bg-amber-50/50"><td class="text-slate-500 font-medium">er/sie/es</td><td>l<strong class="text-rose-600">ä</strong>dt ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>laden ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>ladet ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>laden ... <span class="font-bold text-indigo-600">ein</span></td></tr>
+            </table>
           </div>
-        </div>
 
+          <!-- mitbringen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">mit|bringen</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Traer (consigo)</p>
+            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>bringe ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">du</td><td>bringst ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">er/sie/es</td><td>bringt ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>bringen ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>bringt ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>bringen ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+            </table>
+          </div>
+
+          <!-- anfangen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">an|fangen</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Empezar</p>
+            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>fange ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr class="bg-amber-50/50"><td class="text-slate-500 font-medium">du</td><td>f<strong class="text-rose-600">ä</strong>ngst ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr class="bg-amber-50/50"><td class="text-slate-500 font-medium">er/sie/es</td><td>f<strong class="text-rose-600">ä</strong>ngt ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>fangen ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>fangt ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>fangen ... <span class="font-bold text-indigo-600">an</span></td></tr>
+            </table>
+          </div>
+
+          <!-- abholen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">ab|holen</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Recoger (a alguien)</p>
+            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>hole ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">du</td><td>holst ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">er/sie/es</td><td>holt ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>holen ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>holt ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>holen ... <span class="font-bold text-indigo-600">ab</span></td></tr>
+            </table>
+          </div>
+
+          <!-- mitkommen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">mit|kommen</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Venir (junto con)</p>
+            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>komme ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">du</td><td>kommst ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">er/sie/es</td><td>kommt ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>kommen ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>kommt ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>kommen ... <span class="font-bold text-indigo-600">mit</span></td></tr>
+            </table>
+          </div>
+          
+          <!-- anrufen -->
+          <div class="border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50/30">
+            <div class="bg-indigo-100 p-3 border-b border-indigo-200">
+              <h3 class="font-black text-indigo-900 text-lg">an|rufen</h3>
+              <p class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Llamar (por teléfono)</p>
+            </div>
+            <table class="w-full text-sm verb-table bg-white">
+              <tr><td class="w-1/3 text-slate-500 font-medium">ich</td><td>rufe ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">du</td><td>rufst ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">er/sie/es</td><td>ruft ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">wir</td><td>rufen ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">ihr</td><td>ruft ... <span class="font-bold text-indigo-600">an</span></td></tr>
+              <tr><td class="text-slate-500 font-medium">sie/Sie</td><td>rufen ... <span class="font-bold text-indigo-600">an</span></td></tr>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
         <!-- Akkusativ Pronomen -->
         <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
           <h2 class="text-xl font-extrabold text-emerald-900 mb-4 flex items-center gap-2">
@@ -120,7 +180,7 @@
               <tr class="bg-emerald-50 text-emerald-800 border-b-2 border-emerald-200">
                 <th class="p-2">Nominativ</th>
                 <th class="p-2 font-extrabold">Akkusativ</th>
-                <th class="p-2">Uso en Restaurante / Invitación</th>
+                <th class="p-2">Uso en Restaurant / Einladung</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
@@ -133,31 +193,31 @@
               <tr><td class="p-2">ihr</td><td class="p-2 font-bold text-emerald-600">euch</td><td class="p-2 italic">Wir holen <strong>euch</strong> ab.</td></tr>
             </tbody>
           </table>
-          <p class="text-xs text-amber-700 mt-2 font-bold">¡Recuerda! Solo cambia el MASCULINO (der -> ihn).</p>
+          <p class="text-xs text-amber-700 mt-3 font-bold bg-amber-50 p-2 rounded-lg border border-amber-200">¡Recuerda! Solo cambia el MASCULINO (der -> ihn).</p>
         </div>
-      </div>
 
-      <!-- Bonus Review (Todos los temas) -->
-      <div class="bg-slate-800 text-white p-6 rounded-3xl shadow-sm">
-        <h2 class="text-lg font-bold mb-3 flex items-center gap-2 text-sky-300">
-          <i class="fa-solid fa-bolt"></i> Repaso Flash (Temas Anteriores)
-        </h2>
-        <div class="grid md:grid-cols-3 gap-4 text-sm">
-          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
-            <span class="font-bold text-sky-200">Uhrzeit (La Hora):</span><br>
-            - Formal: <em>Es ist 14 Uhr 30.</em><br>
-            - Informal: <em>Es ist halb drei.</em> (¡Avanza 1 hora!)
-          </div>
-          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
-            <span class="font-bold text-sky-200">Possessivartikel:</span><br>
-            - <em>euer</em> + e = <strong>eure</strong> (¡Pierde la e!)<br>
-            - Dueño hombre: <strong>sein-</strong><br>
-            - Dueña mujer: <strong>ihr-</strong>
-          </div>
-          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
-            <span class="font-bold text-sky-200">Satzklammer (Modales):</span><br>
-            - Ich <strong>muss</strong> dich morgen <strong>anrufen</strong>.<br>
-            (Modal en Pos 2, Infinitivo al final).
+        <!-- Bonus Review (Todos los temas) -->
+        <div class="bg-slate-800 text-white p-6 rounded-3xl shadow-sm">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-sky-300">
+            <i class="fa-solid fa-bolt"></i> Repaso Flash (Temas Anteriores)
+          </h2>
+          <div class="space-y-4 text-sm">
+            <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+              <span class="font-bold text-sky-200 text-base border-b border-slate-500 pb-1 block mb-2">Uhrzeit (La Hora)</span>
+              - Formal: <em>Es ist 14 Uhr 30.</em><br>
+              - Informal: <em>Es ist halb drei.</em> (¡Avanza 1 hora!)
+            </div>
+            <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+              <span class="font-bold text-sky-200 text-base border-b border-slate-500 pb-1 block mb-2">Possessivartikel</span>
+              - <em>euer</em> + e = <strong class="text-rose-300">eure</strong> (¡Pierde la e intermedia!)<br>
+              - Dueño hombre (Stefan): <strong class="text-emerald-300">sein-</strong><br>
+              - Dueña mujer (Nele): <strong class="text-emerald-300">ihr-</strong>
+            </div>
+            <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+              <span class="font-bold text-sky-200 text-base border-b border-slate-500 pb-1 block mb-2">Satzklammer (Modales)</span>
+              - Ich <strong class="text-amber-300">muss</strong> dich morgen <strong class="text-amber-300">anrufen</strong>.<br>
+              <span class="text-xs text-slate-300 mt-1 block">Modal conjugado en Posición 2, verbo infinitivo completo al final. ¡No se separa el prefijo si hay modal!</span>
+            </div>
           </div>
         </div>
       </div>
@@ -206,7 +266,7 @@
           <!-- Email Output -->
           <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200 font-mono text-sm text-slate-700 relative">
             <span class="absolute top-2 right-3 text-[10px] text-slate-400 uppercase font-bold">Vorschau (Vista Previa)</span>
-            <div id="email-output" class="whitespace-pre-line leading-relaxed">
+            <div id="email-output" class="whitespace-pre-line leading-relaxed mt-2 text-base">
               <!-- JS Populated -->
             </div>
           </div>
@@ -232,8 +292,8 @@
           <!-- Line 2 (User) -->
           <div class="flex gap-4 flex-row-reverse">
             <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">Du</div>
-            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl rounded-tr-none text-sm w-full text-right">
-              Ja, ich nehme <select id="d1" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select>. Und für meine Freundin die Limonade (die), sie möchte <select id="d2" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> gern trinken.
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl rounded-tr-none text-sm w-full text-right leading-loose">
+              Ja, ich nehme <select id="d1" class="border p-1 rounded mx-1 font-bold bg-white outline-none text-indigo-700 shadow-sm"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select>. Und für meine Freundin die Limonade (die), sie möchte <select id="d2" class="border p-1 rounded mx-1 font-bold bg-white outline-none text-indigo-700 shadow-sm"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> gern trinken.
             </div>
           </div>
           
@@ -249,13 +309,13 @@
           <div class="flex gap-4 flex-row-reverse">
             <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">Du</div>
             <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl rounded-tr-none text-sm w-full text-right">
-              Ja, das Schnitzel ist lecker. Ich esse <select id="d3" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> sehr gern!
+              Ja, das Schnitzel ist lecker. Ich esse <select id="d3" class="border p-1 rounded mx-1 font-bold bg-white outline-none text-indigo-700 shadow-sm"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> sehr gern!
             </div>
           </div>
 
           <div class="text-center mt-6">
-            <button onclick="checkDialogue()" class="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition-all text-sm">Respuestas Comprobar <i class="fa-solid fa-check ml-1"></i></button>
-            <p id="dialogue-feedback" class="mt-3 text-sm font-bold hidden"></p>
+            <button onclick="checkDialogue()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all text-sm shadow-md">Respuestas Comprobar <i class="fa-solid fa-check ml-1"></i></button>
+            <p id="dialogue-feedback" class="mt-4 p-3 rounded-xl text-sm font-bold hidden"></p>
           </div>
         </div>
       </div>
@@ -284,7 +344,7 @@
         <div id="quiz-feedback" class="hidden mt-4 p-4 rounded-xl text-sm leading-relaxed border"></div>
 
         <div class="flex justify-end mt-4">
-          <button id="btn-next-quiz" onclick="nextQuizQ()" class="hidden bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all">
+          <button id="btn-next-quiz" onclick="nextQuizQ()" class="hidden bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all shadow-md">
             Nächste Frage <i class="fa-solid fa-arrow-right ml-1"></i>
           </button>
         </div>
@@ -316,7 +376,7 @@
       const p3 = document.getElementById('em-tiempo').value;
       const p4 = document.getElementById('em-peticion').value;
       
-      const out = `${p1}\n\n${p2} ${p3} ${p4}\n\nLiebe Grüße,\nValeria`;
+      const out = `${p1}\n\n${p2} ${p3} ${p4}\n\nLiebe Grüße,\nDein Name`;
       document.getElementById('email-output').innerText = out;
     }
 
@@ -340,25 +400,25 @@
 
       feedback.classList.remove('hidden');
       if(correct === 3) {
-        feedback.innerHTML = "¡Excelente! 3/3. Dominas el Acusativo.";
-        feedback.className = "mt-3 text-sm font-bold text-emerald-600";
+        feedback.innerHTML = "¡Excelente! 3/3. Dominas los pronombres en acusativo.";
+        feedback.className = "mt-4 p-3 rounded-xl text-sm font-bold bg-emerald-100 text-emerald-800 border border-emerald-200";
       } else {
-        feedback.innerHTML = "¡Cuidado! Revisa la tabla de teoría. Recuerda: der=ihn, die=sie, das=es.";
-        feedback.className = "mt-3 text-sm font-bold text-rose-600";
+        feedback.innerHTML = "¡Cuidado! Revisa la tabla de teoría. Recuerda: der = ihn, die = sie, das = es.";
+        feedback.className = "mt-4 p-3 rounded-xl text-sm font-bold bg-rose-100 text-rose-800 border border-rose-200";
       }
     }
 
     // --- QUIZ LOGIC ---
     const quizData = [
       { topic: 'Trennbare Verben', q: 'Completa: "Ich ______ dich zur Party ______."', a: 'lade ... ein', opts: ['lade ... ein', 'lade ein ... ø', 'einlade ... ø', 'lädst ... ein'], expl: 'El verbo "einladen" se separa. "Ich lade" en Posición 2, "ein" al final absoluto.' },
-      { topic: 'Akkusativ (Restaurant)', q: '"Der Kaffee ist gut. Ich trinke ______ ohne Zucker."', a: 'ihn', opts: ['er', 'ihn', 'es', 'sie'], expl: 'Kaffee es masculino (der). En acusativo cambia a "ihn".' },
-      { topic: 'Trennbare Verben', q: '¿Qué oración es gramaticalmente correcta para invitar a alguien?', a: 'Kommst du heute Abend mit?', opts: ['Kommst du heute Abend mit?', 'Kommst mit du heute Abend?', 'Mitkommst du heute Abend?', 'Kommst du mit heute Abend?'], expl: 'En preguntas (Ja/Nein), el verbo base va en Pos 1 ("Kommst"), sujeto en Pos 2 ("du"), y el prefijo al final ("mit").' },
-      { topic: 'Akkusativ Pronomen', q: '"Die Pommes frites (Plural) sind lecker. Ich esse ______ gern."', a: 'sie', opts: ['sie', 'es', 'ihn', 'ihnen'], expl: 'Pommes es Plural (die). En acusativo, el plural se queda igual: "sie".' },
-      { topic: 'Bonus: Possessivartikel', q: '"Stefan und Sandra, sind das ______ Fotos?"', a: 'eure', opts: ['eure', 'euere', 'euer', 'ihre'], expl: 'Le hablas a ellos dos (vosotros -> euer). Fotos es plural, así que agregamos "-e". ¡La regla ortográfica hace que euer+e = eure!' },
+      { topic: 'Akkusativ (Restaurant)', q: '"Der Kaffee ist gut. Ich trinke ______ ohne Zucker."', a: 'ihn', opts: ['er', 'ihn', 'es', 'sie'], expl: 'Kaffee es masculino (der). En acusativo el pronombre cambia a "ihn".' },
+      { topic: 'Trennbare Verben', q: '¿Qué oración es gramaticalmente correcta para invitar a alguien?', a: 'Kommst du heute Abend mit?', opts: ['Kommst du heute Abend mit?', 'Kommst mit du heute Abend?', 'Mitkommst du heute Abend?', 'Kommst du mit heute Abend?'], expl: 'En preguntas de Ja/Nein, el verbo base va en Pos 1 ("Kommst"), sujeto en Pos 2 ("du"), y el prefijo al final ("mit").' },
+      { topic: 'Akkusativ Pronomen', q: '"Die Pommes frites (Plural) sind lecker. Ich esse ______ gern."', a: 'sie', opts: ['sie', 'es', 'ihn', 'ihnen'], expl: 'Pommes es Plural (die). En acusativo, el pronombre plural se queda igual: "sie".' },
+      { topic: 'Bonus: Possessivartikel', q: '"Stefan und Sandra, sind das ______ Fotos?"', a: 'eure', opts: ['eure', 'euere', 'euer', 'ihre'], expl: 'Le hablas a ellos dos (vosotros -> euer). Fotos es plural, agregamos "-e". ¡La regla ortográfica hace que euer+e = eure!' },
       { topic: 'Trennbare Verben', q: 'Completa: "Der Film ______ um 20:00 Uhr ______."', a: 'fängt ... an', opts: ['fangt ... an', 'fängt ... an', 'fängt an ... ø', 'anfängt ... ø'], expl: 'El verbo anfangen (empezar) es irregular. Er/sie/es lleva diéresis: "fängt", y el prefijo "an" va al final.' },
       { topic: 'Akkusativ', q: 'El mesero pregunta: "¿Buscas a Lasse?". Tú respondes: "Ja, ich suche ______."', a: 'ihn', opts: ['er', 'ihn', 'ihm', 'es'], expl: 'Lasse es un hombre (masculino). Sustituimos por "ihn" en acusativo.' },
-      { topic: 'Bonus: Uhrzeit', q: '¿Cómo se dice "14:30" en formato informal?', a: 'Es ist halb drei', opts: ['Es ist halb drei', 'Es ist halb zwei', 'Es ist vierzehn Uhr dreißig', 'Es ist dreißig nach zwei'], expl: 'En formato informal (halb), siempre decimos que falta media hora para la *siguiente* hora. 14:30 son las 2:30, así que miramos hacia las 3: halb drei.' },
-      { topic: 'Akkusativ Pronomen', q: 'Completa: "Hallo Maria! Wir holen ______ um 8 Uhr ab." (Te recogemos)', a: 'dich', opts: ['du', 'mich', 'dich', 'euch'], expl: 'El objeto de la acción eres tú. "du" en acusativo se convierte en "dich".' },
+      { topic: 'Bonus: Uhrzeit', q: '¿Cómo se dice "14:30" en formato informal?', a: 'Es ist halb drei', opts: ['Es ist halb drei', 'Es ist halb zwei', 'Es ist vierzehn Uhr dreißig', 'Es ist dreißig nach zwei'], expl: 'En formato informal (halb), siempre decimos que falta media hora para la *siguiente* hora. 14:30 son las 2:30, miramos hacia las 3: halb drei.' },
+      { topic: 'Akkusativ Pronomen', q: 'Completa: "Hallo Maria! Wir holen ______ um 8 Uhr ab." (Te recogemos)', a: 'dich', opts: ['du', 'mich', 'dich', 'euch'], expl: 'El objeto directo eres tú. "du" en acusativo se convierte en "dich".' },
       { topic: 'Satzklammer (Modales)', q: 'Si usas el verbo modal "möchten" (quisiera), ¿dónde va el verbo separable "einladen"?', a: 'Al final, todo junto (einladen)', opts: ['Al final, todo junto (einladen)', 'Al final, separado (lade... ein)', 'En posición 2 (möchte einladen)', 'No se puede usar juntos'], expl: 'Si hay un verbo modal (möchte), este toma la Pos 2. El otro verbo se va al final en infinitivo SIN separarse: "Ich möchte dich einladen".' }
     ];
 
@@ -390,7 +450,6 @@
       const container = document.getElementById('quiz-options');
       container.innerHTML = '';
       
-      // Shuffle options
       const opts = [...q.opts].sort(() => Math.random() - 0.5);
 
       opts.forEach(opt => {
@@ -448,13 +507,17 @@
           <h2 class="text-2xl font-bold text-slate-900 mb-2">¡Prueba Finalizada!</h2>
           <p class="text-slate-500 mb-6">Puntaje final para tu test de Schreiben & Sprechen:</p>
           <div class="text-5xl font-black text-indigo-600 mb-6">${score} / 10</div>
-          <button onclick="window.location.reload()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">
+          <button onclick="window.location.reload()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-md">
             Repasar de nuevo
           </button>
         </div>
       `;
     }
 
+    // Initialize logic
+    window.onload = function() {
+      buildEmail();
+    }
   </script>
 </body>
 </html>
