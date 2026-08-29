@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prüfungstrainer: Schreiben & Sprechen</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .tab-active { background-color: #4f46e5; color: white; border-color: #4f46e5; }
+    .tab-inactive { background-color: white; color: #64748b; border-color: #e2e8f0; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <header class="text-center mb-8">
+      <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">A1 • Vorbereitung auf den Test</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Schreiben und Sprechen 🇩🇪</h1>
+      <p class="text-slate-500 mt-2 text-sm md:text-base">Fokus: Einladungen (trennbare Verben) & Restaurant (Akkusativ)</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <button onclick="switchTab('theorie')" id="tab-theorie" class="tab-btn tab-active px-5 py-2.5 text-sm font-bold rounded-xl border transition-all flex items-center gap-2 shadow-sm">
+        <i class="fa-solid fa-book-open"></i> Teoría Base
+      </button>
+      <button onclick="switchTab('schreiben')" id="tab-schreiben" class="tab-btn tab-inactive px-5 py-2.5 text-sm font-bold rounded-xl border transition-all hover:bg-slate-50 flex items-center gap-2">
+        <i class="fa-solid fa-pen-nib"></i> Schreiben (Email)
+      </button>
+      <button onclick="switchTab('sprechen')" id="tab-sprechen" class="tab-btn tab-inactive px-5 py-2.5 text-sm font-bold rounded-xl border transition-all hover:bg-slate-50 flex items-center gap-2">
+        <i class="fa-solid fa-comments"></i> Sprechen (Restaurant)
+      </button>
+      <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn tab-inactive px-5 py-2.5 text-sm font-bold rounded-xl border transition-all hover:bg-slate-50 flex items-center gap-2">
+        <i class="fa-solid fa-graduation-cap"></i> Mega-Quiz
+      </button>
+    </div>
+
+    <!-- TAB 1: THEORIE -->
+    <div id="panel-theorie" class="tab-panel space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Trennbare Verben -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+          <h2 class="text-xl font-extrabold text-indigo-900 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-scissors"></i> Trennbare Verben (Einladungen)
+          </h2>
+          <p class="text-sm text-slate-600 mb-4">El verbo principal va a la <strong>Posición 2</strong> y el prefijo se va al <strong>final absoluto</strong>.</p>
+          
+          <div class="space-y-3">
+            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
+              <span class="font-bold text-indigo-700">einladen (invitar):</span>
+              <p>Ich <span class="font-bold text-slate-900">lade</span> dich zur Party <span class="font-bold text-indigo-600 underline">ein</span>.</p>
+              <p class="text-xs text-indigo-500 mt-1">⚠️ Du l<strong>ä</strong>dst ein, er l<strong>ä</strong>dt ein.</p>
+            </div>
+            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
+              <span class="font-bold text-indigo-700">mitbringen (traer consigo):</span>
+              <p><span class="font-bold text-slate-900">Bringst</span> du einen Salat <span class="font-bold text-indigo-600 underline">mit</span>?</p>
+            </div>
+            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-100 text-sm">
+              <span class="font-bold text-indigo-700">anfangen (empezar):</span>
+              <p>Die Party <span class="font-bold text-slate-900">fängt</span> um 20 Uhr <span class="font-bold text-indigo-600 underline">an</span>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Akkusativ Pronomen -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+          <h2 class="text-xl font-extrabold text-emerald-900 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-utensils"></i> Personalpronomen (Akkusativ)
+          </h2>
+          <p class="text-sm text-slate-600 mb-4">Se usan para sustituir al objeto directo en el restaurante (ej. "Tomo <em>el café</em>" -> "<em>Lo</em> tomo").</p>
+          
+          <table class="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr class="bg-emerald-50 text-emerald-800 border-b-2 border-emerald-200">
+                <th class="p-2">Nominativ</th>
+                <th class="p-2 font-extrabold">Akkusativ</th>
+                <th class="p-2">Uso en Restaurante / Invitación</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr><td class="p-2">ich</td><td class="p-2 font-bold text-emerald-600">mich</td><td class="p-2 italic">Kommst du <strong>mich</strong> besuchen?</td></tr>
+              <tr><td class="p-2">du</td><td class="p-2 font-bold text-emerald-600">dich</td><td class="p-2 italic">Ich lade <strong>dich</strong> ein.</td></tr>
+              <tr class="bg-amber-50"><td class="p-2">er (der)</td><td class="p-2 font-bold text-amber-600">ihn</td><td class="p-2 italic">Der Kaffee? Ich trinke <strong>ihn</strong>.</td></tr>
+              <tr><td class="p-2">sie (die)</td><td class="p-2 font-bold text-emerald-600">sie</td><td class="p-2 italic">Die Suppe? Ich esse <strong>sie</strong>.</td></tr>
+              <tr><td class="p-2">es (das)</td><td class="p-2 font-bold text-emerald-600">es</td><td class="p-2 italic">Das Wasser? Ich trinke <strong>es</strong>.</td></tr>
+              <tr><td class="p-2">wir</td><td class="p-2 font-bold text-emerald-600">uns</td><td class="p-2 italic">Der Kellner sieht <strong>uns</strong> nicht.</td></tr>
+              <tr><td class="p-2">ihr</td><td class="p-2 font-bold text-emerald-600">euch</td><td class="p-2 italic">Wir holen <strong>euch</strong> ab.</td></tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-amber-700 mt-2 font-bold">¡Recuerda! Solo cambia el MASCULINO (der -> ihn).</p>
+        </div>
+      </div>
+
+      <!-- Bonus Review (Todos los temas) -->
+      <div class="bg-slate-800 text-white p-6 rounded-3xl shadow-sm">
+        <h2 class="text-lg font-bold mb-3 flex items-center gap-2 text-sky-300">
+          <i class="fa-solid fa-bolt"></i> Repaso Flash (Temas Anteriores)
+        </h2>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <span class="font-bold text-sky-200">Uhrzeit (La Hora):</span><br>
+            - Formal: <em>Es ist 14 Uhr 30.</em><br>
+            - Informal: <em>Es ist halb drei.</em> (¡Avanza 1 hora!)
+          </div>
+          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <span class="font-bold text-sky-200">Possessivartikel:</span><br>
+            - <em>euer</em> + e = <strong>eure</strong> (¡Pierde la e!)<br>
+            - Dueño hombre: <strong>sein-</strong><br>
+            - Dueña mujer: <strong>ihr-</strong>
+          </div>
+          <div class="bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <span class="font-bold text-sky-200">Satzklammer (Modales):</span><br>
+            - Ich <strong>muss</strong> dich morgen <strong>anrufen</strong>.<br>
+            (Modal en Pos 2, Infinitivo al final).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SCHREIBEN (EMAIL BUILDER) -->
+    <div id="panel-schreiben" class="tab-panel hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+        <h2 class="text-2xl font-black text-slate-900 mb-2">Generador de Email (Einladung)</h2>
+        <p class="text-slate-500 text-sm mb-6">Arma tu invitación seleccionando las frases correctas. ¡Perfecto para prepararte para el test de <em>Schreiben</em>!</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Opciones -->
+          <div class="space-y-4">
+            <div>
+              <label class="text-xs font-bold uppercase text-slate-400 block mb-1">1. Saludo</label>
+              <select id="em-saludo" onchange="buildEmail()" class="w-full p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm font-semibold">
+                <option value="Hallo Julio,">Hallo Julio,</option>
+                <option value="Liebe Nele,">Liebe Nele,</option>
+                <option value="Sehr geehrte Frau Rocha,">Sehr geehrte Frau Rocha, (Formal)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-bold uppercase text-slate-400 block mb-1">2. La Invitación (Verbo Separable)</label>
+              <select id="em-invitacion" onchange="buildEmail()" class="w-full p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm font-semibold">
+                <option value="ich mache am Samstag eine Party und ich lade dich herzlich ein.">Te invito a mi fiesta (ich lade ... ein)</option>
+                <option value="ich möchte dich am Wochenende zum Essen einladen.">Quisiera invitarte (möchte ... einladen)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-bold uppercase text-slate-400 block mb-1">3. Detalles de Tiempo (Verbo Separable)</label>
+              <select id="em-tiempo" onchange="buildEmail()" class="w-full p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm font-semibold">
+                <option value="Die Party fängt um 20 Uhr an.">Empieza a las 20h (fängt ... an)</option>
+                <option value="Wir holen dich um 19:30 Uhr ab.">Te recogemos a las 19:30h (holen ... ab)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-bold uppercase text-slate-400 block mb-1">4. Petición (Verbo Separable)</label>
+              <select id="em-peticion" onchange="buildEmail()" class="w-full p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm font-semibold">
+                <option value="Bringst du bitte etwas Cola mit?">¿Traes Cola? (Bringst ... mit)</option>
+                <option value="Kommst du am Samstag mit?">¿Vienes con nosotros? (Kommst ... mit)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Email Output -->
+          <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200 font-mono text-sm text-slate-700 relative">
+            <span class="absolute top-2 right-3 text-[10px] text-slate-400 uppercase font-bold">Vorschau (Vista Previa)</span>
+            <div id="email-output" class="whitespace-pre-line leading-relaxed">
+              <!-- JS Populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SPRECHEN (RESTAURANT) -->
+    <div id="panel-sprechen" class="tab-panel hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+        <h2 class="text-2xl font-black text-slate-900 mb-2">Rollenspiel: Im Restaurant</h2>
+        <p class="text-slate-500 text-sm mb-6">Completa el diálogo usando el **Pronombre en Acusativo** correcto para hablar fluidamente en tu test de <em>Sprechen</em>.</p>
+        
+        <div class="space-y-4 max-w-2xl mx-auto" id="dialogue-container">
+          <!-- Dialogue Line 1 -->
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold flex-shrink-0">K</div>
+            <div class="bg-slate-100 p-4 rounded-2xl rounded-tl-none text-sm w-full">
+              <span class="font-bold text-slate-500 block text-xs mb-1">Kellner (Mesero)</span>
+              Guten Abend! Was möchten Sie trinken? Nehmen Sie den Apfelsaft? (der Saft)
+            </div>
+          </div>
+          <!-- Line 2 (User) -->
+          <div class="flex gap-4 flex-row-reverse">
+            <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">Du</div>
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl rounded-tr-none text-sm w-full text-right">
+              Ja, ich nehme <select id="d1" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select>. Und für meine Freundin die Limonade (die), sie möchte <select id="d2" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> gern trinken.
+            </div>
+          </div>
+          
+          <!-- Line 3 -->
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold flex-shrink-0">K</div>
+            <div class="bg-slate-100 p-4 rounded-2xl rounded-tl-none text-sm w-full">
+              <span class="font-bold text-slate-500 block text-xs mb-1">Kellner (Mesero)</span>
+              Gerne. Und zu essen? Möchten Sie das Schnitzel? (das Schnitzel)
+            </div>
+          </div>
+          <!-- Line 4 (User) -->
+          <div class="flex gap-4 flex-row-reverse">
+            <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">Du</div>
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl rounded-tr-none text-sm w-full text-right">
+              Ja, das Schnitzel ist lecker. Ich esse <select id="d3" class="border p-1 rounded mx-1 font-bold bg-white outline-none"><option value="">___</option><option value="ihn">ihn</option><option value="sie">sie</option><option value="es">es</option></select> sehr gern!
+            </div>
+          </div>
+
+          <div class="text-center mt-6">
+            <button onclick="checkDialogue()" class="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition-all text-sm">Respuestas Comprobar <i class="fa-solid fa-check ml-1"></i></button>
+            <p id="dialogue-feedback" class="mt-3 text-sm font-bold hidden"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: MEGA QUIZ -->
+    <div id="panel-quiz" class="tab-panel hidden space-y-6">
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold text-slate-900">Test-Simulation</h2>
+          <div class="text-right">
+            <span id="quiz-score" class="text-2xl font-black text-indigo-600">0</span>
+            <span class="text-slate-400 font-bold"> / 10</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6 text-center">
+          <span id="quiz-topic" class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider block w-max mx-auto mb-3">Topic</span>
+          <h3 id="quiz-question" class="text-lg md:text-xl font-extrabold text-slate-800">Pregunta</h3>
+        </div>
+
+        <div id="quiz-options" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <!-- Options injected here -->
+        </div>
+
+        <div id="quiz-feedback" class="hidden mt-4 p-4 rounded-xl text-sm leading-relaxed border"></div>
+
+        <div class="flex justify-end mt-4">
+          <button id="btn-next-quiz" onclick="nextQuizQ()" class="hidden bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all">
+            Nächste Frage <i class="fa-solid fa-arrow-right ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- TAB LOGIC ---
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('tab-inactive');
+      });
+
+      document.getElementById('panel-' + tabId).classList.remove('hidden');
+      document.getElementById('tab-' + tabId).classList.remove('tab-inactive');
+      document.getElementById('tab-' + tabId).classList.add('tab-active');
+
+      if (tabId === 'schreiben') buildEmail();
+      if (tabId === 'quiz' && currentQuizItem === 0) initQuiz();
+    }
+
+    // --- SCHREIBEN LOGIC ---
+    function buildEmail() {
+      const p1 = document.getElementById('em-saludo').value;
+      const p2 = document.getElementById('em-invitacion').value;
+      const p3 = document.getElementById('em-tiempo').value;
+      const p4 = document.getElementById('em-peticion').value;
+      
+      const out = `${p1}\n\n${p2} ${p3} ${p4}\n\nLiebe Grüße,\nValeria`;
+      document.getElementById('email-output').innerText = out;
+    }
+
+    // --- SPRECHEN LOGIC ---
+    function checkDialogue() {
+      const d1 = document.getElementById('d1');
+      const d2 = document.getElementById('d2');
+      const d3 = document.getElementById('d3');
+      const feedback = document.getElementById('dialogue-feedback');
+      
+      let correct = 0;
+      
+      if(d1.value === 'ihn') { d1.className="border-2 border-emerald-500 bg-emerald-50 p-1 rounded mx-1 font-bold text-emerald-700 outline-none"; correct++; } 
+      else { d1.className="border-2 border-rose-500 bg-rose-50 p-1 rounded mx-1 font-bold text-rose-700 outline-none"; }
+
+      if(d2.value === 'sie') { d2.className="border-2 border-emerald-500 bg-emerald-50 p-1 rounded mx-1 font-bold text-emerald-700 outline-none"; correct++; } 
+      else { d2.className="border-2 border-rose-500 bg-rose-50 p-1 rounded mx-1 font-bold text-rose-700 outline-none"; }
+
+      if(d3.value === 'es') { d3.className="border-2 border-emerald-500 bg-emerald-50 p-1 rounded mx-1 font-bold text-emerald-700 outline-none"; correct++; } 
+      else { d3.className="border-2 border-rose-500 bg-rose-50 p-1 rounded mx-1 font-bold text-rose-700 outline-none"; }
+
+      feedback.classList.remove('hidden');
+      if(correct === 3) {
+        feedback.innerHTML = "¡Excelente! 3/3. Dominas el Acusativo.";
+        feedback.className = "mt-3 text-sm font-bold text-emerald-600";
+      } else {
+        feedback.innerHTML = "¡Cuidado! Revisa la tabla de teoría. Recuerda: der=ihn, die=sie, das=es.";
+        feedback.className = "mt-3 text-sm font-bold text-rose-600";
+      }
+    }
+
+    // --- QUIZ LOGIC ---
+    const quizData = [
+      { topic: 'Trennbare Verben', q: 'Completa: "Ich ______ dich zur Party ______."', a: 'lade ... ein', opts: ['lade ... ein', 'lade ein ... ø', 'einlade ... ø', 'lädst ... ein'], expl: 'El verbo "einladen" se separa. "Ich lade" en Posición 2, "ein" al final absoluto.' },
+      { topic: 'Akkusativ (Restaurant)', q: '"Der Kaffee ist gut. Ich trinke ______ ohne Zucker."', a: 'ihn', opts: ['er', 'ihn', 'es', 'sie'], expl: 'Kaffee es masculino (der). En acusativo cambia a "ihn".' },
+      { topic: 'Trennbare Verben', q: '¿Qué oración es gramaticalmente correcta para invitar a alguien?', a: 'Kommst du heute Abend mit?', opts: ['Kommst du heute Abend mit?', 'Kommst mit du heute Abend?', 'Mitkommst du heute Abend?', 'Kommst du mit heute Abend?'], expl: 'En preguntas (Ja/Nein), el verbo base va en Pos 1 ("Kommst"), sujeto en Pos 2 ("du"), y el prefijo al final ("mit").' },
+      { topic: 'Akkusativ Pronomen', q: '"Die Pommes frites (Plural) sind lecker. Ich esse ______ gern."', a: 'sie', opts: ['sie', 'es', 'ihn', 'ihnen'], expl: 'Pommes es Plural (die). En acusativo, el plural se queda igual: "sie".' },
+      { topic: 'Bonus: Possessivartikel', q: '"Stefan und Sandra, sind das ______ Fotos?"', a: 'eure', opts: ['eure', 'euere', 'euer', 'ihre'], expl: 'Le hablas a ellos dos (vosotros -> euer). Fotos es plural, así que agregamos "-e". ¡La regla ortográfica hace que euer+e = eure!' },
+      { topic: 'Trennbare Verben', q: 'Completa: "Der Film ______ um 20:00 Uhr ______."', a: 'fängt ... an', opts: ['fangt ... an', 'fängt ... an', 'fängt an ... ø', 'anfängt ... ø'], expl: 'El verbo anfangen (empezar) es irregular. Er/sie/es lleva diéresis: "fängt", y el prefijo "an" va al final.' },
+      { topic: 'Akkusativ', q: 'El mesero pregunta: "¿Buscas a Lasse?". Tú respondes: "Ja, ich suche ______."', a: 'ihn', opts: ['er', 'ihn', 'ihm', 'es'], expl: 'Lasse es un hombre (masculino). Sustituimos por "ihn" en acusativo.' },
+      { topic: 'Bonus: Uhrzeit', q: '¿Cómo se dice "14:30" en formato informal?', a: 'Es ist halb drei', opts: ['Es ist halb drei', 'Es ist halb zwei', 'Es ist vierzehn Uhr dreißig', 'Es ist dreißig nach zwei'], expl: 'En formato informal (halb), siempre decimos que falta media hora para la *siguiente* hora. 14:30 son las 2:30, así que miramos hacia las 3: halb drei.' },
+      { topic: 'Akkusativ Pronomen', q: 'Completa: "Hallo Maria! Wir holen ______ um 8 Uhr ab." (Te recogemos)', a: 'dich', opts: ['du', 'mich', 'dich', 'euch'], expl: 'El objeto de la acción eres tú. "du" en acusativo se convierte en "dich".' },
+      { topic: 'Satzklammer (Modales)', q: 'Si usas el verbo modal "möchten" (quisiera), ¿dónde va el verbo separable "einladen"?', a: 'Al final, todo junto (einladen)', opts: ['Al final, todo junto (einladen)', 'Al final, separado (lade... ein)', 'En posición 2 (möchte einladen)', 'No se puede usar juntos'], expl: 'Si hay un verbo modal (möchte), este toma la Pos 2. El otro verbo se va al final en infinitivo SIN separarse: "Ich möchte dich einladen".' }
+    ];
+
+    let currentQuizItem = 0;
+    let score = 0;
+    let qAnswered = false;
+
+    function initQuiz() {
+      currentQuizItem = 0;
+      score = 0;
+      loadNextQuizQ();
+    }
+
+    function loadNextQuizQ() {
+      if(currentQuizItem >= quizData.length) {
+        showResults();
+        return;
+      }
+      
+      const q = quizData[currentQuizItem];
+      qAnswered = false;
+      document.getElementById('btn-next-quiz').classList.add('hidden');
+      document.getElementById('quiz-feedback').classList.add('hidden');
+      document.getElementById('quiz-score').innerText = score;
+      
+      document.getElementById('quiz-topic').innerText = q.topic;
+      document.getElementById('quiz-question').innerText = q.q;
+
+      const container = document.getElementById('quiz-options');
+      container.innerHTML = '';
+      
+      // Shuffle options
+      const opts = [...q.opts].sort(() => Math.random() - 0.5);
+
+      opts.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.innerText = opt;
+        btn.className = 'p-4 bg-white border-2 border-slate-100 rounded-xl font-bold text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 transition-all focus:outline-none text-left';
+        btn.onclick = () => checkQuizAns(opt, btn, q);
+        container.appendChild(btn);
+      });
+    }
+
+    function checkQuizAns(selected, btn, q) {
+      if (qAnswered) return;
+      qAnswered = true;
+
+      const isCorrect = (selected === q.a);
+      const fb = document.getElementById('quiz-feedback');
+      fb.classList.remove('hidden');
+
+      const buttons = document.getElementById('quiz-options').children;
+      for (let b of buttons) {
+        b.disabled = true;
+        if (b.innerText === q.a) {
+          b.className = 'p-4 bg-emerald-50 border-2 border-emerald-500 text-emerald-800 rounded-xl font-bold text-left';
+        } else if (b.innerText === selected) {
+          b.className = 'p-4 bg-rose-50 border-2 border-rose-500 text-rose-800 rounded-xl font-bold text-left';
+        } else {
+          b.className = 'p-4 bg-slate-50 border-2 border-slate-100 text-slate-400 rounded-xl font-medium opacity-50 text-left';
+        }
+      }
+
+      if (isCorrect) {
+        score++;
+        document.getElementById('quiz-score').innerText = score;
+        fb.innerHTML = `<strong>¡Correcto!</strong> ${q.expl}`;
+        fb.className = "mt-4 p-4 rounded-xl text-emerald-800 bg-emerald-100 border border-emerald-200 text-sm";
+      } else {
+        fb.innerHTML = `<strong>¡Atención!</strong> La respuesta era "${q.a}". <br>${q.expl}`;
+        fb.className = "mt-4 p-4 rounded-xl text-rose-800 bg-rose-100 border border-rose-200 text-sm";
+      }
+
+      document.getElementById('btn-next-quiz').classList.remove('hidden');
+    }
+
+    function nextQuizQ() {
+      currentQuizItem++;
+      loadNextQuizQ();
+    }
+
+    function showResults() {
+      const panel = document.getElementById('panel-quiz');
+      panel.innerHTML = `
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center max-w-lg mx-auto">
+          <div class="text-6xl mb-4">🎯</div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">¡Prueba Finalizada!</h2>
+          <p class="text-slate-500 mb-6">Puntaje final para tu test de Schreiben & Sprechen:</p>
+          <div class="text-5xl font-black text-indigo-600 mb-6">${score} / 10</div>
+          <button onclick="window.location.reload()" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all">
+            Repasar de nuevo
+          </button>
+        </div>
+      `;
+    }
+
+  </script>
+</body>
+</html>
